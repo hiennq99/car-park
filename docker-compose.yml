@@ -1,0 +1,14 @@
+services: 
+  postgre: 
+    container_name: car-park
+    image: postgres:10.7
+    ports:
+      - 5432:5432
+    networks:
+      - service_net
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+      POSTGRES_DB: postgres
+networks: 
+  service_net:
