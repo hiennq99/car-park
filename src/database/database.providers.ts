@@ -18,11 +18,12 @@ const dataSource = new DataSource({
   port: Number(process.env.DB_PORT) || 5432,
   username: process.env.DB_USERNAME || 'user',
   password: process.env.PASSWORD || 'password',
-  database: process.env.DATABASE || 'postgre',
+  database: process.env.DATABASE || 'postgres',
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   namingStrategy: new SnakeNamingStrategy(),
   synchronize: true,
   logging: true,
+  migrations: [__dirname + '/migrations/*.ts'],
 });
 
 export const databaseProviders = [

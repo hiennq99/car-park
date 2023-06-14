@@ -1,19 +1,21 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@ObjectType()
 @Entity('Park')
 export class Park {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
   @Column({ type: 'varchar' })
   carParkNo: string;
 
   @Column({ type: 'varchar' })
   address: string;
 
-  @Column({ type: 'varchar' })
-  xCoord: string;
+  @Column({ type: 'float' })
+  xCoord: number;
 
-  @Column({ type: 'varchar' })
-  yCoord: string;
+  @Column({ type: 'float' })
+  yCoord: number;
 
   @Column({ type: 'varchar' })
   carParkType: string;
@@ -34,11 +36,14 @@ export class Park {
   carParkDecks: number;
 
   @Column({ type: 'int' })
-  gentryHeight: number;
+  gantryHeight: number;
 
   @Column({ type: 'varchar' })
   carParkBasement: string;
-}
-function ObjectType(): (target: typeof Park) => void | typeof Park {
-  throw new Error('Function not implemented.');
+
+  @Column({ type: 'int', default: 0 })
+  lotsAvailable: number;
+
+  @Column({ type: 'int', default: 0 })
+  totalLots: number;
 }
