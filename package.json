@@ -36,6 +36,7 @@
     "class-validator": "^0.14.0",
     "cross-var": "^1.1.0",
     "csv-parser": "^3.0.0",
+    "moment": "^2.29.4",
     "postgre": "^0.1.8",
     "proj4": "^2.9.0",
     "proj4js-defs": "^0.0.1",

@@ -42,7 +42,7 @@ export class Park {
   carParkBasement: string;
 
   @Column({ type: 'int', default: 0 })
-  lotsAvailable: number;
+  availableLots: number;
 
   @Column({ type: 'int', default: 0 })
   totalLots: number;
