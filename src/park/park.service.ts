@@ -23,7 +23,8 @@ export class ParkService {
       Number(latitude),
       Number(longitude),
     ]);
-    const data = await this.carparkRepositoty
+
+    const carparks = await this.carparkRepositoty
       .createQueryBuilder('carpark')
       .select('carpark.*')
       .addSelect(
@@ -36,11 +37,18 @@ export class ParkService {
       .orderBy('distance', 'DESC')
       .getRawMany();
 
-    console.log(data);
-    return {
-      lat,
-      lng,
-      ...data,
-    };
+    return carparks.map((d) => {
+      const [lat, lng] = this.proj('EPSG:3414', 'EPSG:4326', [
+        d.x_coord,
+        d.y_coord,
+      ]);
+      return {
+        address: d.address,
+        latitude: lat,
+        longitude: lng,
+        total_lots: d.total_lots,
+        availble_lots: d.available_lots,
+      };
+    });
   }
 }
